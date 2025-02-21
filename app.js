@@ -26,6 +26,11 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Routes
 app.use('/api/auth', require('./routes/auth'));
+app.use('/api/transactions', require('./routes/transactions'));
+app.use('/api/customers', require('./routes/customers'));
+app.use('/api/materials', require('./routes/materials'));
+app.use('/api/vehicles', require('./routes/vehicles'));
+app.use('/api/drivers', require('./routes/drivers'));
 
 
 // Centralized Error Handling Middleware
