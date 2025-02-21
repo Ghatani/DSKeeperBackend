@@ -16,6 +16,20 @@ const app = express();
 // Connect to MongoDB
 connectDB();
 
+// Middlewares
+app.use(express.json());
+app.use(cors());
+app.use(morgan('combined', { stream: logger.stream }));
+
+// Swagger API Docs (accessible at /api-docs)
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+// Routes
+app.use('/api/auth', require('./routes/auth'));
+
+
+// Centralized Error Handling Middleware
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
